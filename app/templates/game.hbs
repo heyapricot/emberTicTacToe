@@ -1,2 +1,5 @@
 {{page-title "TicTacToe"}}
-<Board/>
+<Board
+  @marker={{this.currentMarker}}
+  @onCellClick={{this.onCellClick}}
+/>

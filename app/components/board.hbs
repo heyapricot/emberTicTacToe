@@ -5,10 +5,10 @@
       <button
         type="button"
         class="rounded-full bg-purple-400 text-pink-600"
-        {{on "click" (fn this.writeBoard rowIndex columnIndex)}}
+        {{on "click" (fn this.handleCellClick rowIndex columnIndex)}}
       >
         {{#if item}}
-          <FaIcon @icon={{item.icon}} @size={{item.size}} />
+          <FaIcon @icon={{item.icon}} @size={{item.size}} @prefix={{item.style}} />
         {{/if}}
       </button>
     {{/each}}

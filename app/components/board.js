@@ -14,6 +14,12 @@ export default class BoardComponent extends Component {
 
   @action
   writeBoard(rowIndex, columnIndex) {
-    this.rows[rowIndex][columnIndex] = this.currentMarker;
+    this.rows[rowIndex][columnIndex] = this.args.marker;
+  }
+
+  @action
+  handleCellClick(rowIndex, columnIndex) {
+    this.writeBoard(rowIndex, columnIndex);
+    this.args.onCellClick();
   }
 }
