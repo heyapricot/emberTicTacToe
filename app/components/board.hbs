@@ -8,7 +8,7 @@
         {{on "click" (fn this.handleCellClick rowIndex columnIndex)}}
       >
         {{#if item}}
-          <FaIcon @icon={{item.icon}} @size={{item.size}} @prefix={{item.style}} />
+          <FaIcon @icon={{this.icon item}} @size={{this.size item}} @prefix={{this.style item}} />
         {{/if}}
       </button>
     {{/each}}

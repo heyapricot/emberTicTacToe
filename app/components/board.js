@@ -5,7 +5,6 @@ import { TrackedArray } from 'tracked-built-ins';
 export default class BoardComponent extends Component {
   rowQuantity = 3;
   columnQuantity = 3;
-  currentMarker = { icon: 'xmark', size: '5x' };
 
   @tracked rows = Array.from(
     new Array(this.rowQuantity),
@@ -22,4 +21,16 @@ export default class BoardComponent extends Component {
     this.writeBoard(rowIndex, columnIndex);
     this.args.onCellClick();
   }
+
+  icon = (marker) => {
+    return this.args.markerAttrs[marker].icon;
+  };
+
+  size = (marker) => {
+    return this.args.markerAttrs[marker].size;
+  };
+
+  style = (marker) => {
+    return this.args.markerAttrs[marker].style;
+  };
 }

@@ -5,12 +5,18 @@ import { tracked } from '@glimmer/tracking';
 export default class GameController extends Controller {
   turn = 1;
   playerQuantity = 2;
-  markers = [
-    { icon: 'xmark', size: '5x', style: 'fas' },
-    { icon: 'circle', size: '4x', style: 'far' },
-  ];
-
   @tracked currentMarker = this.markers[0];
+
+  get markerAttrs() {
+    return {
+      X: { icon: 'xmark', size: '5x', style: 'fas' },
+      O: { icon: 'circle', size: '4x', style: 'far' },
+    };
+  }
+
+  get markers() {
+    return Object.keys(this.markerAttrs);
+  }
 
   increaseTurn() {
     this.turn++;
