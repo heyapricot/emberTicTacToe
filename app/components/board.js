@@ -1,19 +1,19 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { TrackedArray } from 'tracked-built-ins';
 export default class BoardComponent extends Component {
   rowQuantity = 3;
   columnQuantity = 3;
-  currentMarker = '💜';
+  currentMarker = { icon: 'xmark', size: '5x' };
 
   @tracked rows = Array.from(
     new Array(this.rowQuantity),
-    () => new Array(this.columnQuantity),
+    () => new TrackedArray(Array(this.columnQuantity)),
   );
 
   @action
   writeBoard(rowIndex, columnIndex) {
     this.rows[rowIndex][columnIndex] = this.currentMarker;
-    console.info(this.rows);
   }
 }

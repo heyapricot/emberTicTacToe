@@ -7,7 +7,9 @@
         class="rounded-full bg-purple-400 text-pink-600"
         {{on "click" (fn this.writeBoard rowIndex columnIndex)}}
       >
-        <FaIcon @icon="xmark" @size="5x" />
+        {{#if item}}
+          <FaIcon @icon={{item.icon}} @size={{item.size}} />
+        {{/if}}
       </button>
     {{/each}}
   {{/each}}
