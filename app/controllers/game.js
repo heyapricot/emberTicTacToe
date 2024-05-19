@@ -31,12 +31,19 @@ export default class GameController extends Controller {
     );
   };
 
-  checkColumns = () => {
-    return this.columns().some(this.hasSequence);
+  diagonals = () => {
+    const leftToRight = this.rows.map((_, index) => this.rows[index][index]);
+    const rightToLeft = this.rows.map(
+      (_, index) => this.rows.toReversed()[index][index],
+    );
+
+    return [leftToRight, rightToLeft];
   };
 
-  checkRows = () => {
-    return this.rows.some(this.hasSequence);
+  checkSequences = () => {
+    const sequences = [this.rows, this.columns(), this.diagonals()].flat();
+
+    return sequences.some(this.hasUniqueElement);
   };
 
   increaseTurn() {
@@ -47,24 +54,24 @@ export default class GameController extends Controller {
     this.currentMarker = this.markers[(this.turn + 1) % this.playerQuantity];
   }
 
-  hasSequence = (row) => {
+  hasUniqueElement = (row) => {
     return !row.includes(undefined) && row.every((elem) => elem === row[0]);
   };
 
   hasWinner = () => {
-    return this.checkRows() || this.checkColumns();
+    return this.checkSequences();
   };
 
   announceWinner = () => {
     if (!this.hasWinner()) return;
 
-    alert('Winner');
+    alert(`Winner is ${this.currentMarker}`);
   };
 
   @action
   onCellClick() {
+    this.announceWinner();
     this.increaseTurn();
     this.toggleMarker();
-    this.announceWinner();
   }
 }
