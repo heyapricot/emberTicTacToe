@@ -1,7 +1,7 @@
 # tictactoe
 
 This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is a frontend only implementation of the Tic-tac-toe game
 
 ## Prerequisites
 
@@ -15,19 +15,15 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
+* `git clone [https://github.com/heyapricot/emberTicTacToe.git](https://github.com/heyapricot/emberTicTacToe.git)` this repository
 * `cd tictactoe`
 * `yarn install`
 
 ## Running / Development
 
 * `yarn start`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
+* Visit the app at [http://localhost:4200](http://localhost:4200).
+* Visit the tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
 ### Running Tests
 
@@ -44,14 +40,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 * `yarn ember build` (development)
 * `yarn build` (production)
 
-### Deploying
+## Wishlist
 
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://cli.emberjs.com/release/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+- During the development, I thought of adding a `Player` object and the associated routes. It would allow to set the player's name and marker
+- I'd love to add a proper display of who the winner is. Maybe a proper modal using the [<dialog>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) element instead of a javascript alert
