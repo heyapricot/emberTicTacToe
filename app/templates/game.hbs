@@ -1,12 +1,16 @@
 {{page-title "Tic-tac-toe" replace=true}}
-<h1 class="text-white text-center text-6xl font-bold font-sans">Turn {{this.turn}}</h1>
-<button
-  type="button"
-  class="rounded-full bg-pink-600 text-white p-6"
-  {{on "click" this.reset}}
->
-  <FaIcon @icon="arrows-rotate" @size="5x" />
-</button>
+<div class="flex flex-col justify-evenly h-3/6 lg:h-2/6 items-center">
+  <h1 class="text-white text-center text-6xl font-bold font-sans mb-3">
+    Turn {{this.turn}}
+  </h1>
+  <button
+    type="button"
+    class="rounded-full bg-pink-600 text-white p-5 w-fit"
+    {{on "click" this.reset}}
+  >
+    <FaIcon @icon="arrows-rotate" @size="4x" />
+  </button>
+</div>
 <Board
   @marker={{this.currentMarker}}
   @markerAttrs={{this.markerAttrs}}
