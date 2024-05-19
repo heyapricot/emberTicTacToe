@@ -4,7 +4,7 @@
     {{#each row as |item columnIndex|}}
       <button
         type="button"
-        class="rounded-full bg-purple-400 text-pink-600"
+        class="rounded-full bg-purple-400 hover:bg-purple-500 text-pink-600 shadow-purple-800 shadow-inner shadow-2xl"
         disabled={{if item true}}
         data-row={{rowIndex}}
         data-column={{columnIndex}}
