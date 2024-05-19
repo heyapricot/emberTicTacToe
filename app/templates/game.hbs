@@ -1,5 +1,12 @@
 {{page-title "Tic-tac-toe" replace=true}}
 <h1 class="text-white text-center text-6xl font-bold font-sans">Turn {{this.turn}}</h1>
+<button
+  type="button"
+  class="rounded-full bg-pink-600 text-white p-6"
+  {{on "click" this.reset}}
+>
+  <FaIcon @icon="arrows-rotate" @size="5x" />
+</button>
 <Board
   @marker={{this.currentMarker}}
   @markerAttrs={{this.markerAttrs}}

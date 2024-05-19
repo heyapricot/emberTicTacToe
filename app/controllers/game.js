@@ -2,8 +2,11 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { TrackedArray } from 'tracked-built-ins';
+import { service } from '@ember/service';
 
 export default class GameController extends Controller {
+  @service router;
+
   playerQuantity = 2;
   rowQuantity = 3;
   columnQuantity = 3;
@@ -73,5 +76,14 @@ export default class GameController extends Controller {
     this.announceWinner();
     this.increaseTurn();
     this.toggleMarker();
+  }
+
+  @action
+  reset() {
+    this.turn = 1;
+    this.rows = Array.from(
+      new Array(this.rowQuantity),
+      () => new TrackedArray(Array(this.columnQuantity)),
+    );
   }
 }
