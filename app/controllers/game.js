@@ -25,8 +25,18 @@ export default class GameController extends Controller {
     return Object.keys(this.markerAttrs);
   }
 
+  columns = () => {
+    return this.rows[0].map((_, colIndex) =>
+      this.rows.map((row) => row[colIndex]),
+    );
+  };
+
+  checkColumns = () => {
+    return this.columns().some(this.hasSequence);
+  };
+
   checkRows = () => {
-    return this.rows.some(this.hasRowSequence);
+    return this.rows.some(this.hasSequence);
   };
 
   increaseTurn() {
@@ -37,12 +47,12 @@ export default class GameController extends Controller {
     this.currentMarker = this.markers[(this.turn + 1) % this.playerQuantity];
   }
 
-  hasRowSequence = (row) => {
+  hasSequence = (row) => {
     return !row.includes(undefined) && row.every((elem) => elem === row[0]);
   };
 
   hasWinner = () => {
-    return this.checkRows();
+    return this.checkRows() || this.checkColumns();
   };
 
   announceWinner = () => {
