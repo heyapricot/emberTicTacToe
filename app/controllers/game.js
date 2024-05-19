@@ -57,6 +57,14 @@ export default class GameController extends Controller {
     this.currentMarker = this.markers[(this.turn + 1) % this.playerQuantity];
   }
 
+  hasBoardFull = () => {
+    return this.rows.reduce(
+      (accumulator, currentRow) =>
+        accumulator && !currentRow.includes(undefined),
+      true,
+    );
+  };
+
   hasUniqueElement = (row) => {
     return !row.includes(undefined) && row.every((elem) => elem === row[0]);
   };
@@ -66,9 +74,10 @@ export default class GameController extends Controller {
   };
 
   announceWinner = () => {
-    if (!this.hasWinner()) return;
-
-    alert(`Winner is ${this.currentMarker}`);
+    let caption = '';
+    if (this.hasBoardFull()) caption = 'Game is tied';
+    if (this.hasWinner()) caption = `Winner is ${this.currentMarker}`;
+    if (caption.length > 0) alert(caption);
   };
 
   @action

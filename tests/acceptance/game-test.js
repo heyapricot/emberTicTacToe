@@ -103,4 +103,33 @@ module('Acceptance | game', function (hooks) {
       window.alert = originalAlert;
     }
   });
+
+  test('Filling the board without a sequence', async function (assert) {
+    await visit('/');
+    await click('button[data-row="0"][data-column="0"]');
+    await click('button[data-row="0"][data-column="1"]');
+    await click('button[data-row="1"][data-column="0"]');
+    await click('button[data-row="2"][data-column="0"]');
+    await click('button[data-row="1"][data-column="1"]');
+    await click('button[data-row="2"][data-column="2"]');
+    await click('button[data-row="2"][data-column="1"]');
+    await click('button[data-row="1"][data-column="2"]');
+
+    let alertCalled = false;
+    const originalAlert = window.alert;
+    window.alert = () => {
+      alertCalled = true;
+    };
+
+    try {
+      // Assuming the button has a specific identifier like an id or data-test attribute
+      await click('button[data-row="0"][data-column="2"]');
+
+      // Assert that the alert was called
+      assert.ok(alertCalled, 'Alert was shown after clicking the button');
+    } finally {
+      // Restore the original window.alert method
+      window.alert = originalAlert;
+    }
+  });
 });
