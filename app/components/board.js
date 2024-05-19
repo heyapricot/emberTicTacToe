@@ -16,6 +16,10 @@ export default class BoardComponent extends Component {
     return this.args.markerAttrs[marker].icon;
   };
 
+  playsBlocked = (item) => {
+    return item || this.args.playsBlocked;
+  };
+
   size = (marker) => {
     return this.args.markerAttrs[marker].size;
   };

@@ -16,6 +16,7 @@ export default class GameController extends Controller {
     () => new TrackedArray(Array(this.columnQuantity)),
   );
   @tracked turn = 1;
+  @tracked playsBlocked = false;
 
   get markerAttrs() {
     return {
@@ -65,6 +66,8 @@ export default class GameController extends Controller {
     );
   };
 
+  hasGameFinished = () => this.hasWinner() || this.hasBoardFull();
+
   hasUniqueElement = (row) => {
     return !row.includes(undefined) && row.every((elem) => elem === row[0]);
   };
@@ -85,6 +88,7 @@ export default class GameController extends Controller {
     this.announceWinner();
     this.increaseTurn();
     this.toggleMarker();
+    this.playsBlocked = this.hasGameFinished();
   }
 
   @action
@@ -95,5 +99,6 @@ export default class GameController extends Controller {
       new Array(this.rowQuantity),
       () => new TrackedArray(Array(this.columnQuantity)),
     );
+    this.playsBlocked = false;
   }
 }
