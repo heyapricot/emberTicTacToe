@@ -4,7 +4,6 @@ import { tracked } from '@glimmer/tracking';
 import { TrackedArray } from 'tracked-built-ins';
 
 export default class GameController extends Controller {
-  turn = 1;
   playerQuantity = 2;
   rowQuantity = 3;
   columnQuantity = 3;
@@ -13,6 +12,7 @@ export default class GameController extends Controller {
     new Array(this.rowQuantity),
     () => new TrackedArray(Array(this.columnQuantity)),
   );
+  @tracked turn = 1;
 
   get markerAttrs() {
     return {
