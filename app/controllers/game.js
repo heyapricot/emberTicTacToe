@@ -81,6 +81,7 @@ export default class GameController extends Controller {
   @action
   reset() {
     this.turn = 1;
+    this.currentMarker = this.markers[0];
     this.rows = Array.from(
       new Array(this.rowQuantity),
       () => new TrackedArray(Array(this.columnQuantity)),
