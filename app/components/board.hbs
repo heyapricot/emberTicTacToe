@@ -1,0 +1,19 @@
+<div class="flex flex-col justify-center w-screen md:w-[calc(100vh)] h-[calc(100vw)]
+   md:h-screen grid grid-rows-3 grid-cols-3 gap-2 p-5 md:p-10 lg:text-5xl">
+  {{#each @rows as |row rowIndex|}}
+    {{#each row as |item columnIndex|}}
+      <button
+        type="button"
+        class="rounded-full bg-purple-400 hover:bg-purple-500 text-pink-600 shadow-purple-800 shadow-inner shadow-2xl"
+        disabled={{if (this.playsBlocked item) true}}
+        data-row={{rowIndex}}
+        data-column={{columnIndex}}
+        {{on "click" (fn this.handleCellClick rowIndex columnIndex)}}
+      >
+        {{#if item}}
+          <FaIcon @icon={{this.icon item}} @size={{this.size item}} @prefix={{this.style item}} />
+        {{/if}}
+      </button>
+    {{/each}}
+  {{/each}}
+</div>
