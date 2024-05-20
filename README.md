@@ -43,4 +43,10 @@ You will need the following things properly installed on your computer.
 ## Wishlist
 
 - During the development, I thought of adding a `Player` object and the associated routes. It would allow to set the player's name and marker
-- I'd love to add a proper display of who the winner is. Maybe a proper modal using the [<dialog>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) element instead of a javascript alert
+- I'd love to add a proper display of who the winner is. Maybe a proper modal using the [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) element instead of a javascript alert
+
+## Mobile first
+The application was developed with a mobile first approach. Here is how it looks in mobile landscape mode <br />
+![Screen Recording 2024-05-19 at 17 42 33](https://github.com/heyapricot/emberTicTacToe/assets/14355495/30fad7d8-ffe0-4fa2-bfdb-31e4d45ff28e) <br />
+And vertically <br />
+![Screen Recording 2024-05-19 at 17 43 28](https://github.com/heyapricot/emberTicTacToe/assets/14355495/02aad961-570e-4567-a342-467fe468de5d)
